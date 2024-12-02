@@ -10,5 +10,12 @@ https://adventofcode.com
 ## Day 1
 
 - [x] Part 1
-- [ ] Part
+- [x] Part 2
+
+Let's go 🚀 that was easy!
+
+## Day 2
+
+- [ ] Part 1
+- [ ] Part 2
 
