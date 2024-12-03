@@ -1,27 +1,30 @@
-safe = 0
-unsafe = 0
+def is_safe(row):
+    inc = [row[i + 1] - row[i] for i in range(len(row) - 1)]
+    if set(inc) <= {1, 2, 3} or set(inc) <= {-1, -2, -3}:
+        return True
+    return False
 
-with open("input.txt", "r") as file:
-    for line in file:
-        numbers = list(map(int, line.strip().split(" ")))
 
-        levels = []
-        for index in range(len(numbers) - 1):
-            if (
-                abs(numbers[index] - numbers[index + 1]) >= 1
-                and abs(numbers[index] - numbers[index + 1]) <= 3
-            ):
-                levels.append(numbers[index] - numbers[index + 1])
-            else:
-                print("This is not safe, breaking out of the numbers loop")
-                break
+data = [[int(y) for y in x.split(" ")] for x in open("input.txt").read().split("\n")]
 
-        print("Checking if all growing or desceing")
-        if all(level > 0 for level in levels):
-            safe += 1
-        elif all(level < 0 for level in levels):
-            safe += 1
-        else:
-            unsafe += 1
+safe_count = sum([is_safe(row) for row in data])
+print(safe_count)
 
-print(safe, unsafe)
+# Calculate the total number of rows that are considered "safe" by checking
+# if removing any single element from the row results in a safe configuration.
+safe_count = sum(
+    [
+        # For each row, check if removing any single element makes it safe
+        any(
+            [
+                # Create a new list without the element at index i
+                # and check if it's safe
+                is_safe(row[:i] + row[i + 1 :])
+                for i in range(len(row))
+            ]
+        )
+        for row in data
+    ]
+)
+# Print the total count of rows that can be made safe by removing one element
+print(safe_count)
