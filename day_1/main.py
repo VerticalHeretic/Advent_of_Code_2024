@@ -3,7 +3,7 @@ from typing import List
 left = []
 right = []
 
-with open("day1.txt", "r") as file:
+with open("input.txt", "r") as file:
     for line in file:
         sep = line.strip().split("   ")
         left.append(int(sep[0]))
