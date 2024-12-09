@@ -16,6 +16,15 @@ Let's go 🚀 that was easy!
 
 ## Day 2
 
+- [x] Part 1
+- [x] Part 2
+
+## Day 3
+
+- [x] Part 1
+- [x] Part 2
+
+## Day 4 
+
 - [ ] Part 1
 - [ ] Part 2
-
